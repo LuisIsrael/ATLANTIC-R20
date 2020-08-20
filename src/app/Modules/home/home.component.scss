@@ -1,54 +1,56 @@
-.hero {
-  width: 100%;
-  height:100%;
-  min-height: 450px;
-  position: relative;
-  top: 0;
-  left: 0;
-  background-color: #d9edfd;
-  transform: translate3d(0,0,0);
+@import url("https://fonts.googleapis.com/css?family=Lora:400,400i,700");
+
+.container {
+  height: 100vh;
+  font-family: Lora, serif;
+  overflow-x: hidden;
+  // Set the distance from viewport to transformed objects.
+  perspective: 2px;
 }
 
-@each $index, $speed, $height in (1, 20s, 136px),
-  (2, 30s, 145px),
-  (3, 55s, 158px),
-  (4, 75s, 468px),
-  (5, 95s, 311px),
-  (6, 120s, 222px) {
-  .layer-#{$index} {
-    animation: parallax_fg linear $speed infinite both;
-    background:  url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/24650/#{$index}.png) 0 100% repeat-x;
-    z-index: 1;
+.slide {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.2em;
+  color: white;
+  box-shadow: 0 0 5px 1px black;
+
+  &.parallax::before {
     position: absolute;
-    bottom: 0;
+    content: "";
+    top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-size:  auto $height;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    transform-style: preserve-3d;
+    // move the pseudo-element back away from the camera
+    // then scale it to fill the viewport
+    // when it's further away, it appears to move more slowly
+    // which is the essential of parallax
+    transform: translateZ(-1px) scale(1.5);
+  }
+
+  &:not(.parallax) {
+    background: #111;
+  }
+
+  h1 {
+    font-size: 250%;
+    text-shadow: 0 2px 2px black;
   }
 }
 
-.bike-1, .bike-2 {
-  background:  url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/24650/bike.png) 0 100% no-repeat;
-  z-index: 1;
-  position: absolute;
-  bottom: 100px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size:  auto 75px;
-  animation: parallax_bike linear 10s infinite both;
+#slide1::before {
+  background-image: url("https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg");
 }
 
-.bike-2 {
-  animation: parallax_bike linear 15s infinite both;
-}
-
-@keyframes parallax_fg {
-  0% { background-position: 2765px 100%;}
-  100% {background-position: 550px 100%; }
-}
-@keyframes parallax_bike {
-  0% { background-position: -300px 100%;}
-  100% {background-position: 2000px 100%; }
+#slide3::before {
+  background-image: url("https://i.loli.net/2019/10/18/uXF1Kx7lzELB6wf.jpg");
 }
