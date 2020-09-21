@@ -1,0 +1,30 @@
+<div class="hero">
+  <div class="form-box">
+    <div class="div button-box">
+      <div id="btn"></div>
+      <button type="button" class="toggle-btn" (click)="login()">Log In</button>
+      <button type="button" class="toggle-btn" (click)="register()">Register</button>
+    </div>
+
+    <div class="social-icons">
+      <img src="https://assets.codepen.io/3950346/IG.png" alt="" />
+      <img src="https://assets.codepen.io/3950346/FB.png" alt="" />
+      <img src="https://assets.codepen.io/3950346/YT.png" alt="" />
+    </div>
+
+    <form id="login" class="input-group">
+      <input type="text" class="input-field" placeholder="Correo" required>
+      <input type="text" class="input-field" placeholder="Contraseña" required>
+      <input type="checkbox" class="check-box"><span>Remember Password</span>
+      <button class="submit-btn" [disabled]="" (click)="loginButton()" type="submit">Entrar</button>
+    </form>
+
+    <form id="register" class="input-group">
+      <input type="text" class="input-field" placeholder="Nombre" required>
+      <input type="text" class="input-field" placeholder="Correo" required>
+      <input type="text" class="input-field" placeholder="Contraseña" required>
+      <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
+      <button class="submit-btn" (click)="registerButton()" type="submit">Crear Cuenta</button>
+    </form>
+  </div>
+</div>
