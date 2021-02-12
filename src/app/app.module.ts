@@ -9,6 +9,14 @@ import { LoaderComponent } from './complements/loader/loader.component';
 import { MusicaComponent } from './Modules/musica/musica.component';
 import { HeaderComponent } from './Modules/header/header.component';
 import { LoginComponent } from './login/login.component';
+import { RegistrarseComponent } from './registrarse/registrarse.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -18,11 +26,19 @@ import { LoginComponent } from './login/login.component';
     LoaderComponent,
     MusicaComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrarseComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

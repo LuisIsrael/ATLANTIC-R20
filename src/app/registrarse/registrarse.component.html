@@ -1,0 +1,34 @@
+<main>
+  <mat-card>
+    <div class="logo" matTooltip="Atlantic México"></div>
+    <h2 class="title">Iniciar Sesión</h2>
+
+    <form (submit)="submit()" [formGroup]="usuariosFormGroup">
+
+      <!--  CORREO-->
+      <mat-form-field class="mat-form-field" appearance="standard">
+        <mat-label>CORREO</mat-label>
+        <input matInput formControlName="email" type="text">
+        <mat-error *ngIf="usuariosFormGroup.controls.email.touched && usuariosFormGroup.controls.email.invalid">
+          <span *ngIf="usuariosFormGroup.controls.email.errors.required">El CORREO es obligatorio</span>
+          <span *ngIf="usuariosFormGroup.controls.email.errors.pattern">El CORREO es incorrecto</span>
+        </mat-error>
+      </mat-form-field>
+
+      <!--  PASSWORD-->
+      <mat-form-field class="mat-form-field" appearance="standard">
+        <mat-label>CONTRASEÑA</mat-label>
+        <input matInput formControlName="password" type="password" onpaste="return true" oncopy="return false"
+               oninput="this.value = this.value.toUpperCase()" onDrop="return false" autocomplete="off">
+        <mat-error *ngIf="usuariosFormGroup.controls.password.touched && usuariosFormGroup.controls.password.invalid">
+          <span *ngIf="usuariosFormGroup.controls.password.errors.required">La contraseña es obligatoria</span>
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button [disabled]="!usuariosFormGroup.valid">Login</button>
+    </form>
+    <p class="Cuenta">No tienes cuenta? <a routerLink="/login" class="inciar-sesion">Crear Cuenta</a></p>
+  </mat-card>
+
+  <section class="drawLogin"></section>
+</main>

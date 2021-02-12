@@ -5,11 +5,13 @@ import {Err404Component} from './complements/err404/err404.component';
 import {LoaderComponent} from './complements/loader/loader.component';
 import {MusicaComponent} from './Modules/musica/musica.component';
 import {LoginComponent} from './login/login.component';
+import {RegistrarseComponent} from './registrarse/registrarse.component';
 
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'crear-cuenta', component: RegistrarseComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'musica', component: MusicaComponent},
   {path: 'loader', component: LoaderComponent},

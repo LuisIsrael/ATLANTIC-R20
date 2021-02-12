@@ -1,30 +1,45 @@
-<div class="hero">
-  <div class="form-box">
-    <div class="div button-box">
-      <div id="btn"></div>
-      <button type="button" class="toggle-btn" (click)="login()">Log In</button>
-      <button type="button" class="toggle-btn" (click)="register()">Register</button>
-    </div>
+<main>
+  <mat-card>
+    <div class="logo" matTooltip="Atlantic México"></div>
+    <h2 class="title">Crear Cuenta</h2>
 
-    <div class="social-icons">
-      <img src="https://assets.codepen.io/3950346/IG.png" alt="" />
-      <img src="https://assets.codepen.io/3950346/FB.png" alt="" />
-      <img src="https://assets.codepen.io/3950346/YT.png" alt="" />
-    </div>
+    <form (submit)="submit()" [formGroup]="usuariosFormGroup">
 
-    <form id="login" class="input-group">
-      <input type="text" class="input-field" placeholder="Correo" required>
-      <input type="text" class="input-field" placeholder="Contraseña" required>
-      <input type="checkbox" class="check-box"><span>Remember Password</span>
-      <button class="submit-btn" [disabled]="" (click)="loginButton()" type="submit">Entrar</button>
+      <!--  NOMBRE-->
+      <mat-form-field class="mat-form-field" appearance="standard">
+        <mat-label>NOMBRE</mat-label>
+        <input matInput formControlName="nombre" type="text" onpaste="return true" oncopy="return false"
+               oninput="this.value = this.value.toUpperCase()" onDrop="return false" autocomplete="off">
+        <mat-error *ngIf="usuariosFormGroup.controls.nombre.touched && usuariosFormGroup.controls.nombre.invalid">
+          <span *ngIf="usuariosFormGroup.controls.nombre.errors.required">El NOMBRE es obligatorio</span>
+        </mat-error>
+      </mat-form-field>
+
+      <!--  APELLIDOS-->
+      <mat-form-field class="mat-form-field" appearance="standard">
+        <mat-label>APELLIDOS</mat-label>
+        <input matInput formControlName="apellidos" type="text" onpaste="return true" oncopy="return false"
+               oninput="this.value = this.value.toUpperCase()" onDrop="return false" autocomplete="off">
+        <mat-error
+          *ngIf="usuariosFormGroup.controls.apellidos.touched && usuariosFormGroup.controls.apellidos.invalid">
+          <span *ngIf="usuariosFormGroup.controls.apellidos.errors.required">Los APELLIDOS son obligatorios</span>
+        </mat-error>
+      </mat-form-field>
+
+      <!--  CORREO-->
+      <mat-form-field class="mat-form-field" appearance="standard">
+        <mat-label>CORREO</mat-label>
+        <input matInput formControlName="email" type="text">
+        <mat-error *ngIf="usuariosFormGroup.controls.email.touched && usuariosFormGroup.controls.email.invalid">
+          <span *ngIf="usuariosFormGroup.controls.email.errors.required">El CORREO es obligatorio</span>
+          <span *ngIf="usuariosFormGroup.controls.email.errors.pattern">El CORREO es incorrecto</span>
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button [disabled]="!usuariosFormGroup.valid">Login</button>
     </form>
+    <p class="Cuenta">Ya tienes cuenta? <a routerLink="/crear-cuenta" class="inciar-sesion">Inicia Sesión</a></p>
+  </mat-card>
 
-    <form id="register" class="input-group">
-      <input type="text" class="input-field" placeholder="Nombre" required>
-      <input type="text" class="input-field" placeholder="Correo" required>
-      <input type="text" class="input-field" placeholder="Contraseña" required>
-      <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
-      <button class="submit-btn" (click)="registerButton()" type="submit">Crear Cuenta</button>
-    </form>
-  </div>
-</div>
+  <section class="drawLogin"></section>
+</main>
