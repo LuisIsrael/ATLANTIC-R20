@@ -1,9 +1,30 @@
 <main>
   <mat-card>
     <div class="logo" matTooltip="Atlantic México"></div>
-    <h2 class="title">Iniciar Sesión</h2>
+    <h2 class="title">Crear Cuenta</h2>
 
     <form (submit)="submit()" [formGroup]="usuariosFormGroup">
+
+      <!--  NOMBRE-->
+      <mat-form-field class="mat-form-field" appearance="standard">
+        <mat-label>NOMBRE</mat-label>
+        <input matInput formControlName="nombre" type="text" onpaste="return true" oncopy="return false"
+               oninput="this.value = this.value.toUpperCase()" onDrop="return false" autocomplete="off">
+        <mat-error *ngIf="usuariosFormGroup.controls.nombre.touched && usuariosFormGroup.controls.nombre.invalid">
+          <span *ngIf="usuariosFormGroup.controls.nombre.errors.required">El NOMBRE es obligatorio</span>
+        </mat-error>
+      </mat-form-field>
+
+      <!--  APELLIDOS-->
+      <mat-form-field class="mat-form-field" appearance="standard">
+        <mat-label>APELLIDOS</mat-label>
+        <input matInput formControlName="apellidos" type="text" onpaste="return true" oncopy="return false"
+               oninput="this.value = this.value.toUpperCase()" onDrop="return false" autocomplete="off">
+        <mat-error
+          *ngIf="usuariosFormGroup.controls.apellidos.touched && usuariosFormGroup.controls.apellidos.invalid">
+          <span *ngIf="usuariosFormGroup.controls.apellidos.errors.required">Los APELLIDOS son obligatorios</span>
+        </mat-error>
+      </mat-form-field>
 
       <!--  CORREO-->
       <mat-form-field class="mat-form-field" appearance="standard">
@@ -15,19 +36,9 @@
         </mat-error>
       </mat-form-field>
 
-      <!--  PASSWORD-->
-      <mat-form-field class="mat-form-field" appearance="standard">
-        <mat-label>CONTRASEÑA</mat-label>
-        <input matInput formControlName="password" type="password" onpaste="return true" oncopy="return false"
-               oninput="this.value = this.value.toUpperCase()" onDrop="return false" autocomplete="off">
-        <mat-error *ngIf="usuariosFormGroup.controls.password.touched && usuariosFormGroup.controls.password.invalid">
-          <span *ngIf="usuariosFormGroup.controls.password.errors.required">La contraseña es obligatoria</span>
-        </mat-error>
-      </mat-form-field>
-
       <button mat-raised-button [disabled]="!usuariosFormGroup.valid">Login</button>
     </form>
-    <p class="Cuenta">No tienes cuenta? <a routerLink="/login" class="inciar-sesion">Crear Cuenta</a></p>
+    <p class="Cuenta">Ya tienes cuenta? <a routerLink="/login" class="inciar-sesion">Inicia Sesión</a></p>
   </mat-card>
 
   <section class="drawLogin"></section>

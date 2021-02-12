@@ -11,8 +11,8 @@ import {RegistrarseComponent} from './registrarse/registrarse.component';
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'crear-cuenta', component: RegistrarseComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'crear-cuenta', component: RegistrarseComponent},
   {path: 'musica', component: MusicaComponent},
   {path: 'loader', component: LoaderComponent},
   {path: '**', component: Err404Component},
