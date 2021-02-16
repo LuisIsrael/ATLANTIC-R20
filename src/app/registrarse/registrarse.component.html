@@ -36,7 +36,7 @@
         </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button [disabled]="!usuariosFormGroup.valid">Login</button>
+      <button mat-raised-button [disabled]="!usuariosFormGroup.valid" (click)="loginFunction()">Login</button>
     </form>
     <p class="Cuenta">Ya tienes cuenta? <a routerLink="/login" class="inciar-sesion">Inicia Sesión</a></p>
   </mat-card>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthServiceService} from '../@Core/Data/Service/auth-service.service';
 
 @Component({
   selector: 'app-registrarse',
@@ -12,6 +13,7 @@ export class RegistrarseComponent implements OnInit {
   empleado = {};
   constructor(
     private formBuilder: FormBuilder,
+    private authService: AuthServiceService,
   ) {}
 
   ngOnInit(): void {
@@ -34,5 +36,9 @@ export class RegistrarseComponent implements OnInit {
       // this.servicio.pEmployees(this.empleado).subscribe( (data: any) => {});
     } else {
     }
+  }
+
+  loginFunction(): any {
+    this.authService.login();
   }
 }

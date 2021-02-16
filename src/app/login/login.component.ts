@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
+import {AuthServiceService} from '../@Core/Data/Service/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   empleado = {};
   constructor(
     private formBuilder: FormBuilder,
+    private authService: AuthServiceService,
   ) {}
 
   ngOnInit(): void {
@@ -34,5 +36,9 @@ export class LoginComponent implements OnInit {
       // this.servicio.pEmployees(this.empleado).subscribe( (data: any) => {});
     } else {
     }
+  }
+
+  loginFunction(): any {
+    this.authService.login();
   }
 }
