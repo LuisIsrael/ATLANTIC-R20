@@ -11,12 +11,6 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   public isLoggedIn: Observable<boolean>;
-  btnDepartamentos = document.getElementById('btn-departamentos');
-  btnCerrarMenu = document.getElementById('btn-menu-cerrar');
-  grid = document.getElementById('grid');
-  contenedorEnlacesNav = document.querySelector('#menu .contenedor-enlaces-nav');
-  contenedorSubCategorias = document.querySelector('#grid .contenedor-subcategorias');
-  esDispositivoMovil = () => window.innerWidth <= 800;
 
   constructor(
     private authService: AuthServiceService,
@@ -70,87 +64,4 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
-
-//   megaMenuActions(): any {
-//     this.btnDepartamentos.addEventListener('mouseover', () => {
-//       if (!this.esDispositivoMovil()){
-//         this.grid.classList.add('activo');
-//       }
-//     });
-//
-//     this.grid.addEventListener('mouseleave', () => {
-//       if (!this.esDispositivoMovil()){
-//         this.grid.classList.remove('activo');
-//       }
-//     });
-//
-//     document.querySelectorAll('#menu .categorias a').forEach((elemento) => {
-//       elemento.addEventListener('mouseenter', (e) => {
-//         if (!this.esDispositivoMovil()){
-//           document.querySelectorAll('#menu .subcategoria').forEach((categoria: Element) => {
-//             categoria.classList.remove('activo');
-//             if (categoria.this.dataset.categoria === e.target.this.dataset.categoria){
-//               categoria.classList.add('activo');
-//             }
-//           });
-//         };
-//       });
-//     });
-//
-// // EventListeners para dispositivo movil.
-//     document.querySelector('#btn-menu-barras').addEventListener('click', (e) => {
-//       e.preventDefault();
-//       if (this.contenedorEnlacesNav.classList.contains('activo')){
-//         this.contenedorEnlacesNav.classList.remove('activo');
-//         document.querySelector('body').style.overflow = 'visible';
-//       } else {
-//         this.contenedorEnlacesNav.classList.add('activo');
-//         document.querySelector('body').style.overflow = 'hidden';
-//       }
-//     });
-//
-// // Click en boton de todos los departamentos (Para version movil).
-//     this.btnDepartamentos.addEventListener('click', (e) => {
-//       e.preventDefault();
-//       this.grid.classList.add('activo');
-//       this.btnCerrarMenu.classList.add('activo');
-//     });
-//
-// // Boton de regresar en el menu de categorias
-//     document.querySelector('#grid .categorias .btn-regresar').addEventListener('click', (e) => {
-//       e.preventDefault();
-//       this.grid.classList.remove('activo');
-//       this.btnCerrarMenu.classList.remove('activo');
-//     });
-//
-//     document.querySelectorAll('#menu .categorias a').forEach((elemento) => {
-//       elemento.addEventListener('click', (e) => {
-//         if (this.esDispositivoMovil()){
-//           this.contenedorSubCategorias.classList.add('activo');
-//           document.querySelectorAll('#menu .subcategoria').forEach((categoria) => {
-//             categoria.classList.remove('activo');
-//             if(categoria.this.dataset.categoria === e.target.this.dataset.categoria){
-//               categoria.classList.add('activo');
-//             }
-//           });
-//         }
-//       });
-//     });
-//
-// // Boton de regresar en el menu de categorias
-//     document.querySelectorAll('#grid .contenedor-subcategorias .btn-regresar').forEach((boton) => {
-//       boton.addEventListener('click', (e) => {
-//         e.preventDefault();
-//         this.contenedorSubCategorias.classList.remove('activo');
-//       });
-//     });
-//
-//     this.btnCerrarMenu.addEventListener('click', (e) => {
-//       e.preventDefault();
-//       document.querySelectorAll('#menu .activo').forEach((elemento) => {
-//         elemento.classList.remove('activo');
-//       });
-//       document.querySelector('body').style.overflow = 'visible';
-//     });
-//   }
 }
