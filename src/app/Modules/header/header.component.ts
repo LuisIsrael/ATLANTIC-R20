@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   public isLoggedIn: Observable<boolean>;
+  public lector = false;
 
   constructor(
     private authService: AuthServiceService,
@@ -21,6 +22,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): any {
     this.isLoggedIn = this.authService.isLoggedIn;
   }
+
+  openMenu(): void {}
 
   logOut(): any {
     Swal.fire({
@@ -63,5 +66,37 @@ export class HeaderComponent implements OnInit {
         });
       }
     });
+  }
+
+  activeSpeaker(): void {
+    this.lector = !this.lector;
+    if (this.lector) {
+      window.addEventListener('mouseup', this.texToSpeach);
+    } else {
+    }
+  }
+
+  texToSpeach = () => {
+    if (this.lector && window.speechSynthesis && window.getSelection()) {
+      const availableVoices = window.speechSynthesis.getVoices();
+      let spanishVoice: any;
+
+      for (let i = 0; i < availableVoices.length; i++) {
+        if (availableVoices[i].lang === 'es-MX') {
+          spanishVoice = availableVoices[i];
+          break;
+        }
+      }
+      if (spanishVoice === null) {
+        spanishVoice = availableVoices[0];
+      }
+      window.speechSynthesis.cancel();
+      const boquita = new SpeechSynthesisUtterance();
+      boquita.rate = 1;
+      boquita.pitch = 0.9;
+      boquita.voice = spanishVoice;
+      boquita.text = window.getSelection().toString();
+      window.speechSynthesis.speak(boquita);
+    }
   }
 }

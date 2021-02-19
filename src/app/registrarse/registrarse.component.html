@@ -1,7 +1,7 @@
 <main>
   <mat-card>
     <div class="logo" matTooltip="Atlantic México"></div>
-    <h2 class="title">Crear Cuenta</h2>
+    <h3 class="title">Crear Cuenta</h3>
 
     <form (submit)="submit()" [formGroup]="usuariosFormGroup">
 
@@ -36,9 +36,20 @@
         </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button [disabled]="!usuariosFormGroup.valid" (click)="loginFunction()">Login</button>
+      <!--  CONTRASEÑA-->
+      <mat-form-field class="mat-form-field" appearance="standard">
+        <mat-label>CONTRASEÑA</mat-label>
+        <input matInput formControlName="password" type="password" onpaste="return true" oncopy="return false"
+               oninput="this.value = this.value.toUpperCase()" onDrop="return false" autocomplete="off">
+        <mat-error
+          *ngIf="usuariosFormGroup.controls.password.touched && usuariosFormGroup.controls.password.invalid">
+          <span *ngIf="usuariosFormGroup.controls.password.errors.required">La CONTRASEÑA es obligatoria</span>
+        </mat-error>
+      </mat-form-field>
+      <button type="submit" mat-raised-button *ngIf="usuariosFormGroup.valid" (click)="loginFunction()">Login</button>
+      <p class="Cuenta">Ya tienes cuenta? <a routerLink="/login" class="inciar-sesion">Inicia Sesión</a></p>
     </form>
-    <p class="Cuenta">Ya tienes cuenta? <a routerLink="/login" class="inciar-sesion">Inicia Sesión</a></p>
+
   </mat-card>
 
   <section class="drawLogin"></section>

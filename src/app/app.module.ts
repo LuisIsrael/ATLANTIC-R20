@@ -18,6 +18,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {HttpClientModule} from '@angular/common/http';
+import {_MatMenuDirectivesModule, MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,10 @@ import {HttpClientModule} from '@angular/common/http';
     MatCardModule,
     MatButtonModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    _MatMenuDirectivesModule,
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

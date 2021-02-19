@@ -17,7 +17,7 @@ mat-card {
 
 form {
   width: 350px;
-  height: 300px;
+  height: 200px;
   display: inline-grid;
 }
 
@@ -40,11 +40,16 @@ form {
   background-repeat: no-repeat;
 }
 
+.title {
+  margin: 0;
+}
+
 button {
   background-color: #ffffff;
   color: #000000;
   transition: all ease 0.3s;
-  height: 50px;
+  height: 30px;
+  width: 100%;
 }
 
 button:hover {

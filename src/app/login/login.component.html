@@ -1,7 +1,7 @@
 <main>
   <mat-card>
     <div class="logo" matTooltip="Atlantic México"></div>
-    <h2 class="title">Iniciar Sesión</h2>
+    <h3 class="title">Iniciar Sesión</h3>
 
     <form (submit)="submit()" [formGroup]="usuariosFormGroup">
       <!--  CORREO-->
@@ -24,9 +24,9 @@
         </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button [disabled]="!usuariosFormGroup.valid" (click)="loginFunction()">Login</button>
+      <button (submit)="usuariosFormGroup.valid" mat-raised-button *ngIf="usuariosFormGroup.valid" (click)="loginFunction()">Login</button>
+      <p class="Cuenta">Ya tienes cuenta? <a routerLink="/crear-cuenta" class="inciar-sesion">Inicia Sesión</a></p>
     </form>
-    <p class="Cuenta">No tienes cuenta? <a routerLink="/crear-cuenta" class="inciar-sesion">Crear Cuenta</a></p>
   </mat-card>
 
   <section class="drawLogin"></section>

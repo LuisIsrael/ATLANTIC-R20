@@ -20,6 +20,7 @@ export class RegistrarseComponent implements OnInit {
     this.usuariosFormGroup = this.formBuilder.group({
       nombre: [null, [Validators.required]],
       apellidos: [null, [Validators.required]],
+      password: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.pattern(this.emailRegExp)]],
     });
   }
